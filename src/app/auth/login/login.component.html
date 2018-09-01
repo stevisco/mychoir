@@ -1,0 +1,18 @@
+  
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  
+<div class="row">  <div class="col-xs-12 col-sm-12 col-md-12"> 
+   Utente: <input type="text" name="user" id="user" class="form-control" required ngModel/>
+</div></div>
+<div class="row">  <div class="col-xs-12 col-sm-12 col-md-12"> 
+    Password: <input type="password" name="password" id="password" class="form-control" required ngModel/>
+ </div></div>
+<div class="row">  <div class="col-xs-12 col-sm-12 col-md-12"> 
+   <input type="submit" class="btn btn-primary" value="Entra" [disabled]="!f.valid"/>
+  </div></div>
+ 
+</form>
+<div class="alert alert-danger" *ngIf="message">{{ message }}</div>
+
+
+

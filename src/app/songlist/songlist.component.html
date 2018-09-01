@@ -1,19 +1,37 @@
-
 <div class="row">
-    <div class="col-xs-12">
-      <button class="btn btn-success">New Song</button>
-    </div>
-  </div>
-  <hr>
+<div class="col-xs-12 col-sm-12 col-md-12" >   
+<a *ngFor="let c of alpha" [routerLink]="['/songs',c]" class="letter">  
+  {{ c }}
+</a>
+</div>
+</div>
+
+<form #searchForm="ngForm"   (ngSubmit)="searchClick(searchForm)">
+<div class="row"><div class="col-xs-10 col-sm-10 col-md-10" >
+<input type="text" class="form-control" name="search" id="search" [(ngModel)]="sexpr" required/>
+</div>
+<div class="col-xs-2 col-sm-2 col-md-2" >
+<button class="btn" type="submit" [disabled]="!searchForm.valid">Cerca</button>
+</div>
+</div> 
+</form>
+<div class="row">   
+<div class="col-xs-12 col-sm-12 col-md-12" >
+  <ul class="list-inline">  
+  <li *ngFor="let tag of songlistfilter.tags" ><a [routerLink]="['/songsbytag',tag]">{{ tag }}</a></li>
+  </ul> 
+</div>
+</div>
+<a *ngIf="alphasel||sexpr||tag" [routerLink]="['/songs']"><span>&times;</span>Rimuovi filtri</a>
+<hr />
   <div class="row">
     <div class="col-xs-12">
       <a *ngFor="let song of songlist"
         [routerLink]="['/song',song.id]"
         class="list-group-item clearfix">
         <div class="pull-left">
-          <h4 class="list-group-item-heading">{{ song.title }}</h4>
-          <p class="list-group-item-text">{{ song.author }}</p>
-          <p class="list-group-item-text">{{ song.id }}</p>
+          <h4 class="list-group-item-heading">{{ song.id }} {{ song.title }}</h4>
+          <p class="list-group-item-text">{{ song.author }} {{ song.authorText }}</p>
         </div>
         
       </a>

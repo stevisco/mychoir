@@ -2,7 +2,36 @@
   {{ song.id }}
   {{ song.title }} 
 </h1>
-<p>{{ song.author }}
-</p>
+
+<dl class="dl-horizontal">
+  <dt>Autore</dt><dd>{{ song.author || '-'}}</dd>
+  <dt>Autore testo:</dt><dd>{{ song.authorText || '-'}}</dd>
+  <dt>Album</dt><dd>{{ song.album || '-'}}</dd>
+  <dt>Anno pubblicazione</dt><dd>{{ song.yearpublished || '-'}}</dd>
+  <dt>Editore</dt><dd>{{ song.publisher || '-'}}</dd>
+  <dt>Riferimenti</dt><dd>{{ song.ref1 || '-'}} {{ song.ref2 || '-'}}  </dd>
+  <dt>Tag</dt><dd><span *ngFor="let tag of song.tags" >{{ tag || '-'}}&nbsp;</span></dd>
+</dl>
+
+<hr />
+Materiali:
+<table class="table">
+<tr *ngFor="let attachment of song.attachments" class="row">
+    <td>
+    <div *ngIf="attachment.endsWith('pdf')" class="col-xs-12">
+      <span class="glyphicon glyphicon-file">&nbsp;</span>
+      <a href="{{ song.attachBaseUrl }}/songattachdownload?name={{ attachment }}" target="_blank">{{ attachment }}</a>
+    </div> 
+    <div *ngIf="attachment.endsWith('mp3')||attachment.endsWith('m4a')" class="col-xs-12">
+      <span class="glyphicon glyphicon-music">&nbsp;</span> 
+      <a href="{{ song.attachBaseUrl }}/songattachdownload?name={{ attachment }}" target="_blank">{{ attachment }}</a>
+      <audio  controls>
+        <source src="{{ song.attachBaseUrl }}/songattachdownload?name={{ attachment }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </td>
+</tr>
+</table>
 <hr/>
-<a routerLink="/songs">Back</a>
+<a routerLink="/songs" class="btn btn-primary">Back</a>     
