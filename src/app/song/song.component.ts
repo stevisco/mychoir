@@ -19,9 +19,13 @@ export class SongComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     if (!(this.id)) this.id = "";
-    this.song=new Song("Loading...","","","",null,null,"","","","","","");
+    this.song=new Song("Loading...","","","",null,null,null,"","","","","","");
     this.songService.get(this.id).subscribe(
-        (data) => { this.song = data; this.song.attachBaseUrl=this.songService.baseUrl; },
+        (data) => { 
+            this.song = data; 
+            this.song.attachBaseUrl=this.songService.baseUrl; 
+            this.song.generateEmbedYoutubeUrl(); 
+        },
         (error) => console.log(error)
     );
 

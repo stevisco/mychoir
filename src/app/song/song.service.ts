@@ -8,7 +8,7 @@ export class SongService {
 
   constructor(private http:HttpClient){}
 
-  baseUrl: string = "http://35.237.153.218:8080";
+  baseUrl: string = "http://35.231.130.55:8080";
   //baseUrl: string = "http://localhost:8080";
 
   getBaseUrl():string {

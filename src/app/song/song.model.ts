@@ -12,16 +12,18 @@ export class Song {
     public yearpublished:string;
     public publisher:string;
     public album:string;
+    public attachmentsLinks: string[];
 
     constructor(id:string, title:string, author:string, authorText:string, 
         tags:string[],
-        attachments:string[],attachBaseUrl:string,ref1:string,ref2:string,
+        attachments:string[],attachmentsLinks:string[], attachBaseUrl:string,ref1:string,ref2:string,
         yearpublished:string,publisher:string,album:string){
         this.id = id;
         this.title = title;
         this.author = author;
         this.authorText = authorText;
         this.attachments = attachments;
+        this.attachmentsLinks = attachmentsLinks;
         this.attachBaseUrl = attachBaseUrl;
         this.tags = tags;
         this.ref1 = ref1;
@@ -31,6 +33,13 @@ export class Song {
         this.publisher=publisher;
     }
 
-    
+    public generateEmbedYoutubeUrl() {
+        var i:number;
+        var attachmentLink:string;
+        for (i=0;i<this.attachmentsLinks.length;i++){
+            attachmentLink = this.attachmentsLinks[i];
+            this.attachmentsLinks[i] = attachmentLink.replace('watch','embed');
+        }
+    }    
 }
 

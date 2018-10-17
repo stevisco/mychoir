@@ -32,6 +32,19 @@ Materiali:
     </div>
   </td>
 </tr>
+<tr *ngFor="let attachmentLink of song.attachmentsLinks" class="row">
+  <td>
+    <div *ngIf="attachmentLink.includes('youtube')" class="col-xs-12">
+      <span class="glyphicon glyphicon-facetime-video">&nbsp;</span>
+      <a href="{{ attachmentLink }}" target="_blank">Apri video</a>
+       
+    </div>
+    <div *ngIf="!attachmentLink.includes('youtube')" class="col-xs-12">
+      <span class="glyphicon glyphicon-link">&nbsp;</span>
+      <a href="{{ attachmentLink }}" target="_blank">{{ attachmentLink }}</a>
+    </div>
+  </td>
+</tr>
 </table>
 <hr/>
 <a routerLink="/songs" class="btn btn-primary">Back</a>     
