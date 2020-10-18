@@ -45,6 +45,14 @@ Materiali:
     </div>
   </td>
 </tr>
+<tr *ngFor="let attachment of song.attachments" class="row">
+  <td>
+  <div *ngIf="attachment.endsWith('png')" class="col-md-10">
+    <a href="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}" target="_blank">
+      <img src="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}"/></a>
+  </div> 
+</td>
+</tr>
 </table>
 <hr/>
 <a routerLink="/songs" class="btn btn-primary">Back</a>     
