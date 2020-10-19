@@ -47,9 +47,17 @@ Materiali:
 </tr>
 <tr *ngFor="let attachment of song.attachments" class="row">
   <td>
-  <div *ngIf="attachment.endsWith('png')" class="col-md-10">
-    <a href="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}" target="_blank">
-      <img src="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}"/></a>
+  <div *ngIf="attachment.endsWith('png')||attachment.endsWith('jpg')||attachment.endsWith('jpeg')" class="col-md-10">
+    <a href="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}" target="_blank" >
+      <img src="{{ song.attachBaseUrl }}/songattach?name={{ attachment }}" width="100" height="150" style="border:2px solid gray" /></a>
+  </div> 
+</td>
+</tr>
+<tr *ngIf="song.fulltext"  class="row">
+  
+  <td> 
+  <div class="col-md-10">
+      <hr/><br/> <p innerHTML="{{ song.fulltext | textformat }}"></p>
   </div> 
 </td>
 </tr>

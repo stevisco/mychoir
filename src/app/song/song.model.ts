@@ -13,11 +13,12 @@ export class Song {
     public publisher:string;
     public album:string;
     public attachmentsLinks: string[];
+    public fulltext:string;
 
     constructor(id:string, title:string, author:string, authorText:string, 
         tags:string[],
         attachments:string[],attachmentsLinks:string[], attachBaseUrl:string,ref1:string,ref2:string,
-        yearpublished:string,publisher:string,album:string){
+        yearpublished:string,publisher:string,album:string,fulltext:string){
         this.id = id;
         this.title = title;
         this.author = author;
@@ -31,6 +32,7 @@ export class Song {
         this.yearpublished=yearpublished;
         this.album=album;
         this.publisher=publisher;
+        this.fulltext=fulltext;
     }
 
     public generateEmbedYoutubeUrl() {

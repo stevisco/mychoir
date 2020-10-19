@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './auth/login/login.component';
+import { TextformatPipe } from './textformat.pipe';
 
 
 const appRoutes: Routes = [
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     SongComponent,
     SonglistComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    TextformatPipe
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
+  exports: [TextformatPipe],
   providers: [SongService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
