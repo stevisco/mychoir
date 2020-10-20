@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Song } from "./song.model";
+import { Program } from "../program/program.model";
 import { SongListFilter } from "../songlist/songlistfilter.model";
 
 @Injectable()
@@ -8,7 +9,7 @@ export class SongService {
 
   constructor(private http:HttpClient){}
 
-  //baseUrl: string = "http://35.231.130.55:8080";
+  //baseUrl: string = "http://coro.stevisco.info:8080";
   baseUrl: string = "http://localhost:8080";
 
   getBaseUrl():string {
@@ -41,5 +42,14 @@ export class SongService {
 
   get(id:String){
    return this.http.get<Song>(this.baseUrl+"/song/"+id);
+  }
+
+
+  getProgram(id:String){
+    return this.http.get<Program>(this.baseUrl+"/program/"+id);
+  }
+
+  getAllPrograms(){
+    return this.http.get<Program[]>(this.baseUrl+"/programs");
   }
 }

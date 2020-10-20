@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-12">
+      <a *ngFor="let program of programlist"
+        [routerLink]="['/program',program.id]"
+        class="list-group-item clearfix">
+        <div class="pull-left">
+          <h4 class="list-group-item-heading">{{ program.id }} {{ program.title }}</h4>
+          <p ></p>
+        </div>
+        
+      </a>
+    </div>
+  </div>

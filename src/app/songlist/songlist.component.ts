@@ -4,7 +4,7 @@ import { SongService } from '../song/song.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { SongListFilter } from './songlistfilter.model';
-import { Auth } from '../auth.model';
+ 
 
 @Component({
   selector: 'app-songlist',
@@ -23,7 +23,6 @@ export class SonglistComponent implements OnInit {
   songlistfilter: SongListFilter = new SongListFilter([""],[""]);
     
   ngOnInit() {
-    var a:Auth = new Auth();
     this.alphasel = this.route.snapshot.params['alpha'];
     this.sexpr = this.route.snapshot.params['sexpr'];
     this.tag = this.route.snapshot.params['tag'];
